@@ -242,17 +242,23 @@
     </footer>
 <script>
         const texto = "Rodrigo Gomes";
-        const velocidade = 300; // Velocidade de escrita em milissegundos
         let i = 0;
 
         function escreverTexto() {
             if (i < texto.length) {
                 document.getElementById("nome-typewriter").innerHTML += texto.charAt(i);
                 i++;
-                setTimeout(escreverTexto, velocidade);
+                
+                // Velocidade base muito mais rápida (40ms) + uma ligeira variação natural
+                let velocidadeSmooth = 40 + Math.random() * 30; 
+                
+                setTimeout(escreverTexto, velocidadeSmooth);
             }
         }
 
+        // Inicia o efeito assim que a página carregar
+        window.onload = escreverTexto;
+    </script>
         // Inicia o efeito assim que a página carregar
         window.onload = escreverTexto;
     </script>
