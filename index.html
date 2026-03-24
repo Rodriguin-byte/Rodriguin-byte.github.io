@@ -28,8 +28,8 @@
 
 <section class="h-screen flex flex-col justify-center items-center px-6 text-center">
         <div class="mb-4 mono text-terminal-green opacity-80 animate-pulse">/root/rodrigo/portfolio_init.sh</div>
-        <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
-            Rodrigo Gomes<span class="terminal-green">_</span>
+        <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight min-h-[60px] md:min-h-[90px]">
+            <span id="nome-typewriter"></span><span class="terminal-green animate-pulse">_</span>
         </h1>
         <p class="text-xl md:text-2xl text-gray-400 max-w-2xl">
             Estudante de Cibersegurança focado em <span class="text-white font-semibold">Análise Forense</span>, <span class="text-white font-semibold">IoT</span> & <span class="text-white font-semibold">Hacking Ético</span>.
@@ -240,6 +240,21 @@
             </div>
         </div>
     </footer>
+<script>
+        const texto = "Rodrigo Gomes";
+        const velocidade = 150; // Velocidade de escrita em milissegundos
+        let i = 0;
 
+        function escreverTexto() {
+            if (i < texto.length) {
+                document.getElementById("nome-typewriter").innerHTML += texto.charAt(i);
+                i++;
+                setTimeout(escreverTexto, velocidade);
+            }
+        }
+
+        // Inicia o efeito assim que a página carregar
+        window.onload = escreverTexto;
+    </script>
 </body>
 </html>
