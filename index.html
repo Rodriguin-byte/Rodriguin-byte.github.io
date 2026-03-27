@@ -13,6 +13,17 @@
         .terminal-green { color: #00ff41; }
         .border-glow:hover { border-color: #00ff41; box-shadow: 0 0 15px rgba(0, 255, 65, 0.2); transition: all 0.3s ease; }
     </style>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #050505; scroll-behavior: smooth; }
+        .mono { font-family: 'Fira Code', monospace; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .terminal-green { color: #00ff41; }
+        .border-glow:hover { border-color: #00ff41; box-shadow: 0 0 15px rgba(0, 255, 65, 0.2); transition: all 0.3s ease; }
+        
+        /* Código para esconder a scrollbar mas manter o scroll ativo */
+        html { scrollbar-width: none; /* Firefox */ -ms-overflow-style: none; /* IE and Edge */ }
+        html::-webkit-scrollbar { display: none; /* Chrome, Safari and Opera */ }
+    </style>
 </head>
 <body class="text-gray-300 leading-relaxed">
 
