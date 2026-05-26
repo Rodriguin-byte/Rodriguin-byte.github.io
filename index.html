@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<script>
+    const savedLang = localStorage.getItem('preferred-lang') || 'pt';
+    document.documentElement.className = 'lang-' + savedLang;
+</script>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
@@ -11,32 +15,24 @@
             font-family: 'Inter', sans-serif; 
             background-color: #050505; 
             scroll-behavior: smooth; 
-            /* Cor verde fixa para todo o site */
             --accent-color: #00ff41; 
             --accent-glow: rgba(0, 255, 65, 0.2);
         }
         .mono { font-family: 'Fira Code', monospace; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
 
-        /* Classes Utilitárias do Accent */
         .terminal-accent { color: var(--accent-color); }
         .border-glow:hover { border-color: var(--accent-color); box-shadow: 0 0 15px var(--accent-glow); transition: all 0.3s ease; }
         
-        /* Controladores de Visibilidade de Idioma */
-        body.lang-pt .lang-en { display: none !important; }
-        body.lang-en .lang-pt { display: none !important; }
+        /* Filtros de Idioma ultra-seguros via tag HTML */
+        html.lang-pt .lang-en { display: none !important; }
+        html.lang-en .lang-pt { display: none !important; }
         
-        /* Esconder a scrollbar mas manter ativa */
         html { scrollbar-width: none; -ms-overflow-style: none; }
         html::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<script>
-    // Garante o carregamento do idioma preferido sem flashes na tela
-    const savedLang = localStorage.getItem('preferred-lang') || 'pt';
-    document.documentElement.setAttribute('lang', savedLang);
-    document.write('<body class="text-gray-300 leading-relaxed relative lang-' + savedLang + '">');
-</script>
+<body class="text-gray-300 leading-relaxed relative">
 
     <div class="fixed top-0 left-0 w-full h-1 z-50 bg-gray-900">
         <div id="scroll-progress" class="h-full transition-all duration-75" style="width: 0%; background-color: var(--accent-color); box-shadow: 0 0 10px var(--accent-color);"></div>
@@ -45,7 +41,7 @@
     <nav class="fixed w-full z-40 glass py-4 px-8 flex justify-between items-center top-1">
         <div class="mono text-sm terminal-accent font-bold">RG_SECURE_PORT:443</div>
         
-        <div class="flex items-center gap-8">
+        <div class="flex items-center gap-6">
             <div class="space-x-8 text-sm uppercase tracking-widest hidden md:flex">
                 <a href="#about" class="hover:text-white transition">
                     <span class="lang-pt">Sobre</span><span class="lang-en">About</span>
@@ -61,10 +57,10 @@
                 </a>
             </div>
 
-            <button id="lang-toggle" class="mono text-xs border border-gray-700 px-3 py-1 rounded flex items-center gap-2 transition hover:bg-gray-900">
-                <span class="terminal-accent">LANG:</span>
-                <span class="lang-pt font-bold text-white">PT <span class="text-gray-600">/ EN</span></span>
-                <span class="lang-en font-bold text-white"><span class="text-gray-600">PT /</span> EN</span>
+            <button id="lang-toggle" class="mono text-xs border border-[#00ff41] text-[#00ff41] px-3 py-1.5 rounded bg-black/40 hover:bg-[#00ff41]/20 transition flex items-center gap-2">
+                <span>🌐</span>
+                <span class="lang-pt font-bold">PT ➔ EN</span>
+                <span class="lang-en font-bold">EN ➔ PT</span>
             </button>
         </div>
     </nav>
@@ -75,7 +71,7 @@
             <span id="nome-typewriter"></span><span class="terminal-accent animate-pulse">_</span>
         </h1>
         <p class="text-xl md:text-2xl text-gray-400 max-w-2xl">
-            <span class="lang-pt">Estudante de Cibersegurança focado em <span class="text-white font-semibold">Forense Digital</span>, <span class="text-white font-semibold">IoT</span> & <span class="text-white font-semibold">Ethical Hacking</span>.</span>
+            <span class="lang-pt">Estudante de Cibersegurança focado em <span class="text-white font-semibold">Análise Forense</span>, <span class="text-white font-semibold">IoT</span> & <span class="text-white font-semibold">Hacking Ético</span>.</span>
             <span class="lang-en">Cybersecurity Student focused on <span class="text-white font-semibold">Digital Forensics</span>, <span class="text-white font-semibold">IoT</span> & <span class="text-white font-semibold">Ethical Hacking</span>.</span>
         </p>
         
@@ -111,8 +107,8 @@
         </h2>
         <div class="glass p-8 rounded-lg border-l-4 border-gray-700 hover:border-[var(--accent-color)] transition duration-300">
             <p class="text-lg text-gray-300 mb-4">
-                <span class="lang-pt">Sou o <strong class="text-white">Rodrigo Gomes</strong>, um estudante de Cibersegurança de 19 anos com uma enorme paixão por tecnologia e segurança digital. As minhas principais áreas de interesse são a <span class="terminal-accent">forense digital</span>, o <span class="terminal-accent">ethical hacking</span> e a segurança em <span class="terminal-accent">dispositivos IoT</span>.</span>
-                <span class="lang-en">I am <strong class="text-white">Rodrigo Gomes</strong>, a 19-year-old Cybersecurity student with a strong passion for technology and digital security. My main areas of interest are <span class="terminal-accent">digital forensics</span>, <span class="terminal-accent">ethical hacking</span>, and <span class="terminal-accent">IoT device security</span>.</span>
+                <span class="lang-pt">Sou o <strong class="text-white">Rodrigo Gomes</strong>, um estudante de Cibersegurança de 19 anos com uma enorme paixão por tecnologia e segurança digital. As minhas principais áreas de interesse são a <span class="terminal-accent">Análise Forense</span>, o <span class="terminal-accent">Hacking Ético</span> e a segurança em <span class="terminal-accent">dispositivos IoT</span>.</span>
+                <span class="lang-en">I am <strong class="text-white">Rodrigo Gomes</strong>, a 19-year-old Cybersecurity student with a strong passion for technology and digital security. My main areas of interest are <span class="terminal-accent">Digital Forensics</span>, <span class="terminal-accent">Ethical Hacking</span>, and <span class="terminal-accent">IoT device security</span>.</span>
             </p>
             <p class="text-lg text-gray-300">
                 <span class="lang-pt">Gosto de explorar o funcionamento dos sistemas, identificar vulnerabilidades complexas e implementar soluções seguras que garantam a integridade e a confidencialidade da informação.</span>
@@ -138,17 +134,16 @@
                             <h3 class="text-2xl font-bold text-white lang-pt">Estagiário de Cibersegurança</h3>
                             <h3 class="text-2xl font-bold text-white lang-en">Cybersecurity Intern</h3>
                             
-                            <p class="terminal-accent font-medium mt-1 lang-pt">Boca do Lobo (Design & Luxo)</p>
-                            <p class="terminal-accent font-medium mt-1 lang-en">Boca do Lobo (Design & Luxury)</p>
+                            <p class="terminal-accent font-medium mt-1">Boca do Lobo (Design & Luxury)</p>
                         </div>
                     </div>
-                    <span class="mono text-sm text-gray-400 bg-gray-900 px-3 py-1 rounded border border-gray-700 lang-pt">Atualidade</span>
-                    <span class="mono text-sm text-gray-400 bg-gray-900 px-3 py-1 rounded border border-gray-700 lang-en">Present</span>
+                    <span class="mono text-sm text-gray-400 bg-gray-900 px-3 py-1 rounded border border-gray-700 lang-pt">Atual</span>
+                    <span class="mono text-sm text-gray-400 bg-gray-900 px-3 py-1 rounded border border-gray-700 lang-en">Current</span>
                 </div>
                 <ul class="space-y-3 text-gray-400 mt-4 border-t border-gray-800 pt-6">
                     <li class="flex items-start">
                         <span class="terminal-accent mr-2 mt-1">▹</span>
-                        <span class="lang-pt">Focado na análise de vulnerabilidades em infraestruturas empresariais.</span>
+                        <span class="lang-pt">Trabalho focado em análise de vulnerabilidades em infraestruturas empresariais.</span>
                         <span class="lang-en">Focused on vulnerability analysis across enterprise infrastructures.</span>
                     </li>
                     <li class="flex items-start">
@@ -165,4 +160,80 @@
                         <div class="bg-gray-900 p-4 rounded-full h-16 w-16 flex items-center justify-center shrink-0 border border-gray-700">
                             <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 0
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v7M5 9.814v4.145M19 9.814v4.145"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">CTeSP em Cibersegurança</h3>
+                            <p class="terminal-accent font-medium mt-1 lang-pt">ISTEC Porto (Instituto Superior de Tecnologias Avançadas do Porto)</p>
+                            <p class="terminal-accent font-medium mt-1 lang-en">ISTEC Porto (Higher Institute of Advanced Technologies of Porto)</p>
+                        </div>
+                    </div>
+                    <span class="mono text-sm text-gray-400 bg-gray-900 px-3 py-1 rounded border border-gray-700 lang-pt">A concluir</span>
+                    <span class="mono text-sm text-gray-400 bg-gray-900 px-3 py-1 rounded border border-gray-700 lang-en">In Progress</span>
+                </div>
+                <ul class="space-y-3 text-gray-400 mt-4 border-t border-gray-800 pt-6">
+                    <li class="flex items-start">
+                        <span class="terminal-accent mr-2 mt-1">▹</span>
+                        <span class="lang-pt">Formação técnica avançada em segurança de redes, sistemas e aplicações.</span>
+                        <span class="lang-en">Advanced technical training in network, system, and application security.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="terminal-accent mr-2 mt-1">▹</span>
+                        <span class="lang-pt">Desenvolvimento de competências práticas em Hacking Ético, Análise Forense e mitigação de ameaças digitais.</span>
+                        <span class="lang-en">Developing practical skills in Ethical Hacking, Digital Forensics, and threat mitigation.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 px-6 max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-white mb-8 flex items-center">
+            <span class="terminal-accent mono mr-4">03.</span>
+            <span class="lang-pt">Skills & Tools</span><span class="lang-en">Skills & Tools</span>
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="glass p-6 rounded-lg border-glow">
+                <h3 class="text-xl font-bold text-white mb-4 border-b border-gray-700 pb-2 text-center">Languages</h3>
+                <ul class="space-y-2 mono text-sm text-gray-400 text-center">
+                    <li><span class="terminal-accent">▸</span> Python</li>
+                    <li><span class="terminal-accent">▸</span> Bash / Shell Scripting</li>
+                    <li><span class="terminal-accent">▸</span> C</li>
+                    <li><span class="terminal-accent">▸</span> SQL</li>
+                    <li><span class="terminal-accent">▸</span> HTML</li>
+                </ul>
+            </div>
+            <div class="glass p-6 rounded-lg border-glow">
+                <h3 class="text-xl font-bold text-white mb-4 border-b border-gray-700 pb-2 text-center">Tools</h3>
+                <ul class="space-y-2 mono text-sm text-gray-400 text-center">
+                    <li><span class="terminal-accent">▸</span> Burp Suite / Caido</li>
+                    <li><span class="terminal-accent">▸</span> Wireshark</li>
+                    <li><span class="terminal-accent">▸</span> Metasploit Framework</li>
+                    <li><span class="terminal-accent">▸</span> Nmap</li>
+                </ul>
+            </div>
+            <div class="glass p-6 rounded-lg border-glow">
+                <h3 class="text-xl font-bold text-white mb-4 border-b border-gray-700 pb-2 text-center">Systems & Infra</h3>
+                <ul class="space-y-2 mono text-sm text-gray-400 text-center">
+                    <li><span class="terminal-accent">▸</span> Kali Linux</li>
+                    <li><span class="terminal-accent">▸</span> Ubuntu / Ubuntu Server</li>
+                    <li><span class="terminal-accent">▸</span> Microsoft Windows Server</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+        
+    <section id="projects" class="py-20 px-6 max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-white mb-8 flex items-center">
+            <span class="terminal-accent mono mr-4">04.</span>
+            <span class="lang-pt">Projetos & Ferramentas</span><span class="lang-en">Projects & Tools</span>
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <a href="https://github.com/JoaoMreis08/Pentest-platform" target="_blank" class="glass p-6 rounded-lg border-glow flex flex-col justify-between group cursor-pointer block transition duration-300">
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <svg class="w-8 h-8 terminal-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                        <svg class="w-5 h-5 text-gray-500 group-hover:text-[var(--accent-color)] transition" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11
